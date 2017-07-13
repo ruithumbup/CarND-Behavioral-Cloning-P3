@@ -20,7 +20,7 @@ import cv2
 import numpy as np
 import sklearn
 
-print(samples)
+# print(samples)
 
 def generator(samples, batch_size=32):
     num_samples = len(samples)
@@ -51,7 +51,7 @@ train_generator = generator(train_samples, batch_size=32)
 validation_generator = generator(validation_samples, batch_size=32)
 
 from keras.models import Sequential, Model
-from keras.layers import Lambda
+from keras.layers import Lambda, Flatten, Dense
 from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 
@@ -68,3 +68,5 @@ model.compile(loss='mse', optimizer='adam')
 model.fit_generator(train_generator, samples_per_epoch=len(train_samples),
                     validation_data=validation_generator,
                     nb_val_samples=len(validation_samples), nb_epoch=3)
+model.save('model.h5')
+exit()
