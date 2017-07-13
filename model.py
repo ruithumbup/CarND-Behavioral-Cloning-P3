@@ -19,6 +19,7 @@ train_samples, validation_samples = train_test_split(samples, test_size=0.2)
 import cv2
 import numpy as np
 import sklearn
+from sklearn.utils import shuffle
 
 # print(samples)
 
