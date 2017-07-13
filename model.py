@@ -36,7 +36,8 @@ def generator(samples, batch_size=32):
                 name = ('./training-'
                         + str(batch_sample[-1]) 
                         + '/IMG/'
-                        + batch_sample[0].split('/')[-1])
+                        + batch_sample[0].split("\\")[-1])
+                # print(name)
                 center_image = cv2.imread(name)
                 center_angle = float(batch_sample[3])
                 images.append(center_image)
@@ -50,6 +51,9 @@ def generator(samples, batch_size=32):
 # compile and train the model using the generator function
 train_generator = generator(train_samples, batch_size=32)
 validation_generator = generator(validation_samples, batch_size=32)
+
+test_output = (next(train_generator))
+print(test_output[0])
 
 from keras.models import Sequential, Model
 from keras.layers import Lambda, Flatten, Dense
