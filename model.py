@@ -2,15 +2,11 @@ import os
 import csv
 
 samples = []
-for training_set_index in range(2):
-
-    with open('./training-' 
-              + str(training_set_index+1) 
-              + '/driving_log.csv') as csvfile:
-        reader = csv.reader(csvfile)
-        for line in reader:
-            line.append(training_set_index+1)
-            samples.append(line)
+with open('./training-1' 
+          +'/driving_log.csv') as csvfile:
+    reader = csv.reader(csvfile)
+    for line in reader:
+        samples.append(line)
 
 
 from sklearn.model_selection import train_test_split
@@ -33,15 +29,15 @@ def generator(samples, batch_size=32):
             images = []
             angles = []
             for batch_sample in batch_samples:
-                name = ('./training-'
-                        + str(batch_sample[-1]) 
-                        + '/IMG/'
-                        + batch_sample[0].split("\\")[-1])
+                name = ('./training-1/IMG/'
+                        +batch_sample[0].split("\\")[-1])
                 # print(name)
                 center_image = cv2.imread(name)
                 center_angle = float(batch_sample[3])
                 images.append(center_image)
                 angles.append(center_angle)
+                images.append(cv2.flip(center_image,1))
+                angles.append(center_angle*-1.0)
 
             # trim image to only see section with road
             X_train = np.array(images)
@@ -56,7 +52,7 @@ test_output = (next(train_generator))
 print(test_output[0])
 
 from keras.models import Sequential, Model
-from keras.layers import Lambda, Flatten, Dense
+from keras.layers import Lambda, Flatten, Dense, Cropping2D
 from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 
@@ -67,7 +63,16 @@ model = Sequential()
 model.add(Lambda(lambda x: x/127.5 - 1.,
         input_shape=(row, col, ch),
         output_shape=(row, col, ch)))
+model.add(Cropping2D(cropping=((70,25),(0,0))))
+model.add(Convolution2D(24,5,5,subsample=(2,2),activation="relu"))
+model.add(Convolution2D(36,5,5,subsample=(2,2),activation="relu"))
+model.add(Convolution2D(48,5,5,subsample=(2,2),activation="relu"))
+model.add(Convolution2D(64,3,3,activation="relu"))
+model.add(Convolution2D(64,3,3,activation="relu"))
 model.add(Flatten())
+model.add(Dense(100))
+model.add(Dense(50))
+model.add(Dense(10))
 model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 model.fit_generator(train_generator, samples_per_epoch=len(train_samples),
