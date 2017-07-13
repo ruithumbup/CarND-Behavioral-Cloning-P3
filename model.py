@@ -36,7 +36,7 @@ def generator(samples, batch_size=32):
                 name = ('./training-'
                         + str(batch_sample[-1]) 
                         + '/IMG/'
-                        + batch_sample[0].split('/')[-1])
+                        + batch_sample[0].split('\\')[-1])
                 center_image = cv2.imread(name)
                 center_angle = float(batch_sample[3])
                 images.append(center_image)
