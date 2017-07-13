@@ -65,8 +65,8 @@ ch, row, col = 3, 160, 320  # Change this for trimmed image format
 model = Sequential()
 # Preprocess incoming data, centered around zero with small standard deviation 
 model.add(Lambda(lambda x: x/127.5 - 1.,
-        input_shape=(ch, row, col),
-        output_shape=(ch, row, col)))
+        input_shape=(row, col, ch),
+        output_shape=(row, col, ch)))
 model.add(Flatten())
 model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
