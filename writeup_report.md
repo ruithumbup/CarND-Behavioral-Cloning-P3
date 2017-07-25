@@ -134,14 +134,14 @@ I then recorded the vehicle recovering from the left side and right sides of the
 
 Then I repeated this process on track two in order to get more data points.
 
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
+To augment the data set, I also flipped images and angles thinking that this would double the data set For example, here is an image that has then been flipped:
 
 ![alt text][image6]
 ![alt text][image7]
 
 Etc ....
 
-After the collection process, I had 6292 number of data points. I then preprocessed this data by ...
+After the collection process, I had 6292 number of data points. I then preprocessed this data by crop them, and flip them. So that the total data set contains 12584 augmented images
 
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
