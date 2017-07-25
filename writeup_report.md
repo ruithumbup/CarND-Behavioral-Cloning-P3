@@ -19,12 +19,12 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image2]: ./examples/normal.jpg "Normal driving"
+[image3]: ./examples/recover_l.jpg "Recovery Image"
+[image4]: ./examples/recover_r.jpg "Recovery Image"
+[image5]: ./examples/recover_ll.jpg "Recovery Image"
+[image6]: ./examples/normal.jpg "Normal Image"
+[image7]: ./examples/normal_f.jpg "Flipped Image"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -97,6 +97,7 @@ The final model architecture (model.py lines 64-85) consisted of a convolution n
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 320x160x3 image   							| 
+| Augmentation        		| centralize, small std, crop  		| 
 | Convolution 1     	| 5x5 stride, depth = 24 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride	 				|
@@ -120,13 +121,13 @@ Here is a visualization of the architecture (note: visualizing the architecture 
 
 ![alt text][image1]
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
 ![alt text][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to recover from different kind of road boundrys. These images show what a recovery looks like starting from ... :
 
 ![alt text][image3]
 ![alt text][image4]
@@ -141,9 +142,9 @@ To augment the data sat, I also flipped images and angles thinking that this wou
 
 Etc ....
 
-After the collection process, I had X number of data points. I then preprocessed this data by ...
+After the collection process, I had 6292 number of data points. I then preprocessed this data by ...
 
 
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
+I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 3 as evidenced by comparing training set accuracy and validation set accuracy. I used an adam optimizer so that manually training the learning rate wasn't necessary.
