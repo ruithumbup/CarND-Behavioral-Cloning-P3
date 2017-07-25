@@ -19,10 +19,10 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/normal.jpg "Normal driving"
-[image3]: ./examples/recover_l.jpg "Recovery Image"
-[image4]: ./examples/recover_r.jpg "Recovery Image"
-[image5]: ./examples/recover_ll.jpg "Recovery Image"
+[image2]: ./examples/rec1.jpg "Recovery Image"
+[image3]: ./examples/rec2.jpg "Recovery Image"
+[image4]: ./examples/rec3.jpg "Recovery Image"
+[image5]: ./examples/rec4.jpg "Recovery Image"
 [image6]: ./examples/normal.jpg "Normal Image"
 [image7]: ./examples/normal_f.jpg "Flipped Image"
 
@@ -118,17 +118,16 @@ The final model architecture (model.py lines 64-85) consisted of a convolution n
 
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
-
-![alt text][image1]
+Please see above table as a visulization of the architecture.
 
 #### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
+
+I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to recover from different kind of road boundrys. These images show what a recovery looks like starting from top left to bottom right :
+
 ![alt text][image2]
-
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to recover from different kind of road boundrys. These images show what a recovery looks like starting from ... :
-
 ![alt text][image3]
 ![alt text][image4]
 ![alt text][image5]
