@@ -49,7 +49,7 @@ train_generator = generator(train_samples, batch_size=32)
 validation_generator = generator(validation_samples, batch_size=32)
 
 test_output = (next(train_generator))
-print(test_output[0])
+# print(test_output[0])
 
 from keras.models import Sequential, Model
 from keras.layers import Lambda, Flatten, Dense, Cropping2D
