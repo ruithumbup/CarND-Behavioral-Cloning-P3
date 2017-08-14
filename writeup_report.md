@@ -84,7 +84,7 @@ My first step was to use a convolution neural network model similar to the LeNet
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
 
-To combat the overfitting, I modified the model so that it trains for less epochs. I also noticed that the MSE are both high for training set and validation set. So I tried to keep adding more convolution layers. 
+To combat the overfitting, I first normalized the input images. I then added three max pooling layers. I also modified the model so that it trains for less epochs. I also noticed that the MSE are both high for training set and validation set. So I tried to keep adding more convolution layers. After this, I removed dropout layer as the network is already so deep and the training data cannot produce over-fitting to my observation.
 
 The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track. Mostly when lines on either side are intermittent. In these cases, I tried to collect more data of driving aroung these areas and also recovering from these areas 
 
