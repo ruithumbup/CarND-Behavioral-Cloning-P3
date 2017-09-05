@@ -58,7 +58,7 @@ The model.py file contains the code for training and saving the convolution neur
 My model consists of a five-layer convolution neural network with 5x5 and 3x3 filter sizes and depths between 24 and 64 (model.py lines 73-77)
 The first three convolution layers implemented max pooling with 2x2 stride. activation function "RELU" is used between every convolution layer
 
-The model includes RELU layers to introduce nonlinearity (code line 73-77), and the data is normalized in the model using a Keras lambda layer (code line 67). 
+The model includes RELU layers to introduce nonlinearity (code lines 73-80), and the data is normalized in the model using a Keras lambda layer (code line 67). 
 
 #### 2. Attempts to reduce overfitting in the model
 
@@ -104,9 +104,8 @@ The final model architecture (model.py lines 64-85) consisted of a convolution n
 | Convolution 2     	| 5x5 stride, depth = 36 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride	 				|
-| Convolution 3     	| 5x5 stride, depth = 48 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride	 				|
+| Convolution 3     	| 3x3 stride, depth = 48 	|
+| RELU					|								 				|
 | Convolution 4     	| 3x3 stride, depth = 64 	|
 | RELU					|												|
 | Convolution 4     	| 3x3 stride, depth = 64 	|
