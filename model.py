@@ -71,11 +71,11 @@ model.add(Lambda(lambda x: x/127.5 - 1.,
 # Crop image
 model.add(Cropping2D(cropping=((70,25),(0,0))))
 # 5 convlution layers
-model.add(Convolution2D(24,5,5,subsample=(2,2),activation="relu",border_mode='same'))
-#model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Convolution2D(36,5,5,subsample=(2,2),activation="relu",border_mode='same'))
-#model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Convolution2D(48,5,5,subsample=(2,2),activation="relu",border_mode='same'))
+model.add(Convolution2D(24,5,5,activation="relu",border_mode='same'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Convolution2D(36,5,5,activation="relu",border_mode='same'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Convolution2D(48,3,3,subsample=(2,2),activation="relu",border_mode='same'))
 model.add(Convolution2D(64,3,3,activation="relu"))
 model.add(Convolution2D(64,3,3,activation="relu"))
 # 4 fully connected layers
